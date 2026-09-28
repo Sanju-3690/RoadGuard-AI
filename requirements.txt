@@ -1,0 +1,13 @@
+ultralytics
+streamlit
+numpy
+pandas
+Pillow
+PyYAML
+python-dotenv
+chromadb
+sentence-transformers
+google-genai
+matplotlib
+opencv-python
+pytest
