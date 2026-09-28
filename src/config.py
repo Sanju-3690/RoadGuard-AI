@@ -24,19 +24,26 @@ class Settings:
     def __init__(self):
         self.root = ROOT
 
+        # Gemini
         self.gemini_api_key = get_secret("GEMINI_API_KEY", "")
         self.gemini_model = get_secret(
             "GEMINI_MODEL",
             "gemini-3.8-flash"
         )
 
+        # Trained model
         self.model_path = ROOT / "models" / "roadguard.pt"
 
+        # Knowledge base
         self.knowledge_path = (
             ROOT / "data" / "knowledge" / "maintenance_knowledge.jsonl"
         )
 
-        self.database_path = ROOT / "data" / "roadguard.db"
+        # Database
+        self.db_path = ROOT / "data" / "roadguard.db"
+
+        # Keep the old name too, in case another file uses it
+        self.database_path = self.db_path
 
 
 settings = Settings()
