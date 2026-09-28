@@ -30,6 +30,7 @@ class Settings:
             "GEMINI_MODEL",
             "gemini-3.8-flash"
         )
+        self.confidence = 0.25
 
         # Trained model
         self.model_path = ROOT / "models" / "roadguard.pt"
