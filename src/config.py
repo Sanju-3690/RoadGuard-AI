@@ -8,6 +8,7 @@ load_dotenv(ROOT / ".env")
 
 
 def get_secret(name, default=""):
+    """Read a value from Streamlit Cloud secrets first, then .env."""
     try:
         import streamlit as st
 
@@ -19,5 +20,23 @@ def get_secret(name, default=""):
     return os.getenv(name, default)
 
 
-gemini_api_key = get_secret("GEMINI_API_KEY", "")
-gemini_model = get_secret("GEMINI_MODEL", "gemini-3.8-flash")
+class Settings:
+    def __init__(self):
+        self.root = ROOT
+
+        self.gemini_api_key = get_secret("GEMINI_API_KEY", "")
+        self.gemini_model = get_secret(
+            "GEMINI_MODEL",
+            "gemini-3.8-flash"
+        )
+
+        self.model_path = ROOT / "models" / "roadguard.pt"
+
+        self.knowledge_path = (
+            ROOT / "data" / "knowledge" / "maintenance_knowledge.jsonl"
+        )
+
+        self.database_path = ROOT / "data" / "roadguard.db"
+
+
+settings = Settings()
