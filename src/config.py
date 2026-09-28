@@ -24,26 +24,53 @@ class Settings:
     def __init__(self):
         self.root = ROOT
 
+        # =========================
         # Gemini
+        # =========================
         self.gemini_api_key = get_secret("GEMINI_API_KEY", "")
         self.gemini_model = get_secret(
             "GEMINI_MODEL",
             "gemini-3.8-flash"
         )
+
+        # =========================
+        # Detector
+        # =========================
         self.confidence = 0.25
 
+        # =========================
         # Trained model
+        # =========================
         self.model_path = ROOT / "models" / "roadguard.pt"
 
+        # =========================
         # Knowledge base
+        # =========================
+        self.knowledge_data = ROOT / "data" / "knowledge"
+
+        # Keep this alias too
         self.knowledge_path = (
-            ROOT / "data" / "knowledge" / "maintenance_knowledge.jsonl"
+            self.knowledge_data / "maintenance_knowledge.jsonl"
         )
 
-        # Database
+        # =========================
+        # Vector database
+        # =========================
+        self.vector_dir = ROOT / "data" / "vectorstore"
+
+        # =========================
+        # Embedding model
+        # =========================
+        self.embedding_model = (
+            "sentence-transformers/all-MiniLM-L6-v2"
+        )
+
+        # =========================
+        # SQLite database
+        # =========================
         self.db_path = ROOT / "data" / "roadguard.db"
 
-        # Keep the old name too, in case another file uses it
+        # Keep old alias too
         self.database_path = self.db_path
 
 
