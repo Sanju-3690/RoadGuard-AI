@@ -1,4 +1,4 @@
-ultralytics
+ultralytics-opencv-headless
 streamlit
 numpy
 pandas
@@ -9,5 +9,5 @@ chromadb
 sentence-transformers
 google-genai
 matplotlib
-opencv-python
+opencv-python-headless
 pytest
